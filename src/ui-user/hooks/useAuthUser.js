@@ -1,7 +1,5 @@
-
 import { useAlertMessage } from "./useAlertMessage";
 import { conexiaPointAPI } from "../../api/conexiaPointAPI";
-
 
 export const useAuthUser = () => {
 
@@ -10,7 +8,7 @@ export const useAuthUser = () => {
     const onStartLogin = async( form ) => {
         try {
             const { data } = await conexiaPointAPI.post( '/auth/login-user', form );
-            document.cookie = `auth-token=${ data.token }; 'max-age=1800; domain=.conexiapoint.com; path=/; samesite=none; secure`;
+            document.cookie = `auth-token=${ data.token }; max-age=1200; domain=.conexiapoint.com; path=/; samesite=none; secure`;
             window.location.href = `${ import.meta.env.VITE_API_USER_URL }/escritorio`;
             return true;
         } catch (error) {
